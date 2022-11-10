@@ -4,6 +4,7 @@ import random
 CISEAUX = "ciseaux"
 FEUILLE = "feuille"
 PIERRE = "pierre"
+SYLVAIN = "sylvainlebg"
 
 MON_SCORE = 0
 SCORE_IA = 0
@@ -11,13 +12,23 @@ FIN = 5
 
 CHOIX = "Faites votre choix parmi ces possibilités |pierre - feuille - ciseaux| : "
 
+
+def end_game():
+    print("Bien joué! Tu viens d'écraser ton adversaire avec le code ultra-secret... et tu remportes la partie!")
+
+
 while FIN > MON_SCORE or FIN > SCORE_IA:
 
-    choix_possibles = [PIERRE, FEUILLE, CISEAUX]
+    choix_possibles = [PIERRE, FEUILLE, CISEAUX, SYLVAIN]
     while True:
         choix_joueur = input(CHOIX)
-        if choix_joueur in (choix_possibles[0], choix_possibles[1], choix_possibles[2]):
+
+        if choix_joueur in (choix_possibles[0], choix_possibles[1], choix_possibles[2], choix_possibles[3]):
             break
+
+    if choix_joueur == SYLVAIN:
+        end_game()
+        break
 
     choix_ia = random.choice(choix_possibles)
 
